@@ -1,53 +1,61 @@
+//----OVERVIEW---------------------------------
+//word chosen and check value against userPushArray;
+
+//-------------VARIABLES--------------------------------------
+
+
+
+//seperate 
+
 var wins = 0;
 var losses = 0;
-
-var wordBank = ["platypus", "octopus", "shark", "gecko", "crab"];
-//current word chosen for game at random
-var randomWord = wordBank[Math.floor(Math.random() * wordBank.length)];
-//will take a word from wordBank at random
-var userGuess = [];//use charAt??store user letter guesses
-var displayWord[];//array for letters of randomWord
 var limit = 6;//loss countdown in for loop for(var turns = 0; turns < limit; turns++){}
-var guess = '';//will store onkeyup for userGuess
+var wordBank = ["pikachu","greninja","hitmonchan","eevee", "sandshrew"];
+var randomLetters = [];//array to store letters from randomWord
+//var userGuess = [];//store user letter guesses
+var displayWord = [];//array for letters of randomWord...use charAt??
+//will take a word from wordBank at random
+var randomWord = wordBank[Math.floor(Math.random() * wordBank.length)];
+//console.log(randomWord);//WORKED
+for (var i = 0; i < randomWord.length; i++) {
+  //takes randomWord characters and places in randomLetters array
+  randomLetters.push(randomWord.charAt([i]))
+};//will be in function in game later
+console.log(randomLetters);
+blankLetters = randomLetters.length;//will be '-'
+for (var i = 0; i < blankLetters; i++) {
+  displayWord.push("_");
+}
+console.log(displayWord);
+// Let's start by grabbing a reference to the <span> below.
+//let userGuess = document.getElementById("user-text");
+
 //think i will use if statement for userGuess && displayWord
 //userGuess.push(guess);
 
-//superhero-logging will help for function with changing displayed word??
-//begin game function
-function startGame() {
-	document.getElementById("start-button").
+// Converts the user's answer to lowercase.
+  //var userGuessLower = userGuess.toLowerCase();
+  // Next, we give JavaScript a function to execute when onkeyup event fires.
+   document.onkeyup = function(event) {
+        var userGuess = event.key;
+        console.log(userGuess);
 
-	      document.onkeyup = function(event) {
-		var guess = event.key.toLowerCase();
-		if
-        var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
-
-        if ((userGuess === "r") || (userGuess === "p") || (userGuess === "s")) {
-
-          // Creating a variable to hold our new HTML. Our HTML now keeps track of our wins/losses/ties.
-          var html = "<p>Choose a letter 'a - z'</p>" +
-          "<p>wins: " + wins + "</p>" +
-          "<p>losses: " + losses + "</p>" +
-          "<p>ties: " + ties + "</p>";
-
-          document.querySelector("#game").innerHTML = html;
-
-        }
-      };
 }
 
+//var guess = '';//will store onkeyup for userGuess
+
+
+//take word chosen and check value against userPushArray;
+
+//superhero-logging will help for function with changing displayed word??
+
+
+
+
 //for loop with randomWord
-var randomWord =
-function 
 
 
-if ((userGuess = "p") || (userGuess = "")
-// Randomly choose a word from compOptions variable to use in the game
-
-
-
-
-
+// if ((userGuess = "p") || (userGuess = "")
 
 
 //sets a new variable to call empty divs and then fill with new information for functions below
@@ -74,30 +82,35 @@ updatedLettersGuessed.innerHTML="";
 
 
 
-// Creating variables to hold the number of wins, losses, and ties. They start at 0.
-//from previous rps
-      
-
-
-
-
-
-
-//if blocks
-if (userGuess === ""
-
-
 // ---------------------------------------- Functions ----------------------------------
+//begin game function
+function startGame() {
+  document.getElementById("start-button").
 
+        document.onkeyup = function(event) {
+    var guess = event.key.toLowerCase();
+    
 
+        if ((userGuess === "r") || (userGuess === "p") || (userGuess === "s")) {
 
+          // Creating a variable to hold our new HTML. Our HTML now keeps track of our wins/losses/ties.
+          var html = "<p>Choose a letter 'a - z'</p>" +
+          "<p>wins: " + wins + "</p>" +
+          "<p>losses: " + losses + "</p>" +
+          "<p>ties: " + ties + "</p>";
+
+          document.querySelector("#game").innerHTML = html;
+
+        }
+      };
+}
+
+//function will take the randomWord and display "-".
+function fillInBlank() {
+
+}
 // this function randomly selects an initial word, changes it to dashes, then displays on page
-
-
-
-function randomize (){
-
-
+function randomize(){
 
   var computerRandom = options[Math.floor(Math.random()*options.length)];
 
@@ -119,21 +132,11 @@ function randomize (){
 
 
 
-
-
-
-
-// show word as only dashes
-
-
-
-
-
 // run this function whenever user presses a key, to record and document user guess
-document.onkeyup = function(event) {
-	//captures key press, converts it to lowercase, and saves it to variable.
-	var letter = String.fromCharCode(event.keyCode).toLowerCase();
-}
+//document.onkeyup = function(event) {
+  //captures key press, converts it to lowercase, and saves it to variable.
+  //var letter = String.fromCharCode(event.keyCode).toLowerCase();
+//}
 // document.onkeyup = function(event) {
 
 
@@ -143,47 +146,6 @@ document.onkeyup = function(event) {
 //   return this.options.length;
 
 // }
-
-//
-
-// function initialWord() {
-
-//   var dashes = " ";
-
-//   for (var i=0; i < this.wordLength(); i++) {
-
-//     dashes + "_";
-
-//   }
-
-//
-
-//   this.updatedComputerChoice = dashes;
-
-//   return dashes;
-
-// }
-
-//
-
-// initialWord();
-
-
-
-//
-
-//   //determine which key was pressed
-
-//  // search string for index of that letter, use var res = str.charAt(i); to show letter
-
-//   var userGuess = event.key;
-
-//
-
-//
-
-// };
-
 
 
 // compare user key pressed to letters in chosen word
@@ -206,8 +168,8 @@ document.onkeyup = function(event) {
 
 
 
-//------------------------------------------------Processes
+//------------------------------------------------FUNCTION EXECUTIONS--------------------------
 
 
 
-randomize ();
+// randomize ();
