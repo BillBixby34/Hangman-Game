@@ -3,35 +3,47 @@
 
 //-------------VARIABLES--------------------------------------
 
-
-
-//seperate 
-
+//Game score
 var wins = 0;
 var losses = 0;
 var limit = 6;//loss countdown in for loop for(var turns = 0; turns < limit; turns++){}
+
+
 var wordBank = ["pikachu","greninja","hitmonchan","eevee", "sandshrew"];
 var randomLetters = [];//array to store letters from randomWord
 //var userGuess = [];//store user letter guesses
 var displayWord = [];//array for letters of randomWord...use charAt??
-//will take a word from wordBank at random
+
+// ---------------------------------------- Functions ----------------------------------
+//begin game function
+
+function startGame() {
+  //will take a word from wordBank at random
 var randomWord = wordBank[Math.floor(Math.random() * wordBank.length)];
 //console.log(randomWord);//WORKED
-for (var i = 0; i < randomWord.length; i++) {
-  //takes randomWord characters and places in randomLetters array
-  randomLetters.push(randomWord.charAt([i]))
-};//will be in function in game later
-console.log(randomLetters);
-blankLetters = randomLetters.length;//will be '-'
-for (var i = 0; i < blankLetters; i++) {
-  displayWord.push("_");
-}
-console.log(displayWord);
-// Let's start by grabbing a reference to the <span> below.
-//let userGuess = document.getElementById("user-text");
 
-//think i will use if statement for userGuess && displayWord
-//userGuess.push(guess);
+//will place letters of randomWord in letter array
+for (var i = 0; i < randomWord.length; i++) {
+
+  randomLetters.push(randomWord.charAt([i]))
+
+};//closes for loop randomWord
+console.log(randomLetters);
+//will be '-'
+for (var j = 0; j < randomLetters.length; j++) {
+  displayWord.push("_");
+}//closes for loop displayWord
+console.log(displayWord)
+
+//prints displayWord into #computerChoice
+//FIX: commas between "-"
+document.getElementById("computerChoice").innerHTML = displayWord;
+//displays wins
+document.getElementById("wins").innerHTML = wins;
+//displays guesses left
+document.getElementById("guessesLeft").innerHTML = limit;
+};//startGame()
+
 
 // Converts the user's answer to lowercase.
   //var userGuessLower = userGuess.toLowerCase();
@@ -39,96 +51,51 @@ console.log(displayWord);
    document.onkeyup = function(event) {
         var userGuess = event.key;
         console.log(userGuess);
-
-}
-
-//var guess = '';//will store onkeyup for userGuess
-
-
-//take word chosen and check value against userPushArray;
-
-//superhero-logging will help for function with changing displayed word??
-
-
-
-
-//for loop with randomWord
-
-
-// if ((userGuess = "p") || (userGuess = "")
-
-
-//sets a new variable to call empty divs and then fill with new information for functions below
-
-var updatedWins = document.getElementById("wins").innerHTML=0;
+        for (var i = 0; i < randomLetters.length; i++) {
+          if (userGuess === randomLetters[i]) {
+            for (var j = 0; j < displayWord.length; j++) {
+              displayWord[j] === userGuess;
+              console.log(displayWord);
+            }
+  //place value from randomLetters into displayLetters "-"
+  //displayWord.charAt[j] = randomLetters.charAt[i]
+          };//if block
+        };//for randomLetters block
+        
+    };//keyup function event
 
 
 
+// var updatedLettersGuessed = document.getElementById("lettersGuessed");
+
+// updatedLettersGuessed.innerHTML="";
 
 
 
-
-
-
-var updatedGuessesLeft = document.getElementById("guessesLeft");
-
-updatedGuessesLeft.innerHTML=9;
-
-
-
-var updatedLettersGuessed = document.getElementById("lettersGuessed");
-
-updatedLettersGuessed.innerHTML="";
-
-
-
-// ---------------------------------------- Functions ----------------------------------
-//begin game function
-function startGame() {
-  document.getElementById("start-button").
-
-        document.onkeyup = function(event) {
-    var guess = event.key.toLowerCase();
-    
-
-        if ((userGuess === "r") || (userGuess === "p") || (userGuess === "s")) {
-
-          // Creating a variable to hold our new HTML. Our HTML now keeps track of our wins/losses/ties.
-          var html = "<p>Choose a letter 'a - z'</p>" +
-          "<p>wins: " + wins + "</p>" +
-          "<p>losses: " + losses + "</p>" +
-          "<p>ties: " + ties + "</p>";
-
-          document.querySelector("#game").innerHTML = html;
-
-        }
-      };
-}
 
 //function will take the randomWord and display "-".
 function fillInBlank() {
 
 }
-// this function randomly selects an initial word, changes it to dashes, then displays on page
-function randomize(){
+// function randomize(){
 
-  var computerRandom = options[Math.floor(Math.random()*options.length)];
+//   var computerRandom = options[Math.floor(Math.random()*options.length)];
 
-  var remainingLetters = computerRandom.length;
+//   var remainingLetters = computerRandom.length;
 
-  var initialOptions = [];
+//   var initialOptions = [];
 
-  for(var i = 0; i < computerRandom.length; i++) {
+//   for(var i = 0; i < computerRandom.length; i++) {
 
-    initialOptions[i] = "  ___  ";
+//     initialOptions[i] = "  ___  ";
 
-    }
+//     }
 
-  var updatedComputerChoice = document.getElementById("computerChoice");
+//   var updatedComputerChoice = document.getElementById("computerChoice");
 
-      updatedComputerChoice.innerHTML=initialOptions;
+//       updatedComputerChoice.innerHTML=initialOptions;
 
-}
+// }
 
 
 
@@ -170,6 +137,6 @@ function randomize(){
 
 //------------------------------------------------FUNCTION EXECUTIONS--------------------------
 
-
+startGame();
 
 // randomize ();
