@@ -49,20 +49,17 @@ document.getElementById("guessesLeft").innerHTML = limit;
   //var userGuessLower = userGuess.toLowerCase();
   // Next, we give JavaScript a function to execute when onkeyup event fires.
    document.onkeyup = function(event) {
-        var userGuess = event.key;
+        // Determine which key was pressed, make it lowercase, and set it to the userInput variable.
+        var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
         console.log(userGuess);
-        for (var i = 0; i < randomLetters.length; i++) {
+        for (var i = 0; i < displayWord.length; i++) {
           if (userGuess === randomLetters[i]) {
-            for (var j = 0; j < displayWord.length; j++) {
-              displayWord[j] === userGuess;
+              displayWord[i] = userGuess;
               console.log(displayWord);
-            }
+            }//works
   //place value from randomLetters into displayLetters "-"
-  //displayWord.charAt[j] = randomLetters.charAt[i]
           };//if block
-        };//for randomLetters block
-        
-    };//keyup function event
+        };//for keyupfunction block
 
 
 
@@ -77,57 +74,8 @@ document.getElementById("guessesLeft").innerHTML = limit;
 function fillInBlank() {
 
 }
-// function randomize(){
-
-//   var computerRandom = options[Math.floor(Math.random()*options.length)];
-
-//   var remainingLetters = computerRandom.length;
-
-//   var initialOptions = [];
-
-//   for(var i = 0; i < computerRandom.length; i++) {
-
-//     initialOptions[i] = "  ___  ";
-
-//     }
-
-//   var updatedComputerChoice = document.getElementById("computerChoice");
-
-//       updatedComputerChoice.innerHTML=initialOptions;
-
-// }
 
 
-
-// run this function whenever user presses a key, to record and document user guess
-//document.onkeyup = function(event) {
-  //captures key press, converts it to lowercase, and saves it to variable.
-  //var letter = String.fromCharCode(event.keyCode).toLowerCase();
-//}
-// document.onkeyup = function(event) {
-
-
-
-// function wordLength () {
-
-//   return this.options.length;
-
-// }
-
-
-// compare user key pressed to letters in chosen word
-
-
-
-// loop for what to do, if key pressed matches show the letter, if not document letter in updatedLettersGuessed
-
-
-
-
-
-
-
-// loop if word is guessed, add one to wins column, run win message, after 9 guesses if word not guessed, run lost message
 
 
 
