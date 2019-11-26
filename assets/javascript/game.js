@@ -4,20 +4,22 @@
 //-------------VARIABLES--------------------------------------
 
 //Game score
-var wins = 0;
-var losses = 0;
-var limit = 6;//loss countdown in for loop for(var turns = 0; turns < limit; turns++){}
+let wins = 0;
+let losses = 0;
+let limit = 6;//loss countdown in for loop for(var turns = 0; turns < limit; turns++){}
 
 
 var wordBank = ["pikachu","greninja","hitmonchan","eevee", "sandshrew"];
 var randomLetters = [];//array to store letters from randomWord
 //var userGuess = [];//store user letter guesses
 var displayWord = [];//array for letters of randomWord...use charAt??
-
+var missedLetter = [];
 // ---------------------------------------- Functions ----------------------------------
 //begin game function
 
 function startGame() {
+  //reset the limit each game
+  limit = 6;
   //will take a word from wordBank at random
 var randomWord = wordBank[Math.floor(Math.random() * wordBank.length)];
 //console.log(randomWord);//WORKED
@@ -53,15 +55,21 @@ document.getElementById("guessesLeft").innerHTML = limit;
         var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
         console.log(userGuess);
         for (var i = 0; i < displayWord.length; i++) {
+          
           if (userGuess === randomLetters[i]) {
               displayWord[i] = userGuess;
               console.log(displayWord);
             }//works
-  //place value from randomLetters into displayLetters "-"
+
+            else {//ahve to stop loop
+              missedLetter.push(userGuess);
+              console.log(missedLetter);
+              limit--;
+            }
           };//if block
         };//for keyupfunction block
 
-
+//Next, collect wrong answers, turn--, if turn=0, etc.-------------------------------------------
 
 // var updatedLettersGuessed = document.getElementById("lettersGuessed");
 
@@ -70,16 +78,20 @@ document.getElementById("guessesLeft").innerHTML = limit;
 
 
 
-//function will take the randomWord and display "-".
-function fillInBlank() {
+//keep score, tally misses
+function scoreKeep() {
+  if (displayWord.toString() === randomLetters.toString()) {
+    alert("YOU WIN!");
+    wins++;
+    document.querySelector("#wins").innerHTML = wins;
+    startGame();
+    }
 
-}
-
-
-
-
-
-
+  if (limit === 0) {
+    alert("YOU LOSE!");
+    startGame();
+  }
+  }
 
 
 
