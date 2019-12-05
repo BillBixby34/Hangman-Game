@@ -9,6 +9,7 @@ let losses = 0;
 let limit = 6;//loss countdown in for loop for(var turns = 0; turns < limit; turns++){}
 
 
+
 var wordBank = ["pikachu","greninja","hitmonchan","eevee", "sandshrew"];
 var randomLetters = [];//array to store letters from randomWord
 //var userGuess = [];//store user letter guesses
@@ -48,21 +49,32 @@ document.getElementById("guesses-left").innerHTML = limit;
 
 //check letter, will stop after each letter input
 function checkLetter(letter) {
+
+  var letterNow = false;//will set to stop loop;
   for (var i = 0; i < displayWord.length; i++) {
           //check if letter is in randomLetter array
           if (letter === randomLetters[i]) {
-            //want to update displayword w/ randomLette
-              letter = displayWord[i];
-              console.log(displayWord);
-            }//works
+            letterNow = true;
+          };
+        }
+        if (letterNow) {
 
-            else {
+          for (var j = 0; j < displayWord.length; j++) {
+            
+            if (letter === randomLetters[j]) {
+              displayWord[j] = letter;
+
+              console.log(displayWord);
+            }
+          }
+        }
+
+            else{
               missedLetter.push(letter);
               console.log(missedLetter);
               limit--;
-            }
-          };//if block
-        };//for keyupfunction bloc
+            };
+          };//checkLetter function
 
 // Converts the user's answer to lowercase.
   //var userGuessLower = userGuess.toLowerCase();
