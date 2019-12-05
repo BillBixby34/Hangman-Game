@@ -11,9 +11,8 @@ let limit = 6;//loss countdown in for loop for(var turns = 0; turns < limit; tur
 
 
 var wordBank = ["pikachu","greninja","hitmonchan","eevee", "sandshrew"];
-var randomLetters = [];//array to store letters from randomWord
-//var userGuess = [];//store user letter guesses
-var displayWord = [];//array for letters of randomWord...use charAt??
+let randomLetters = [];//array to store letters from randomWord
+var displayWord = [];//array holding a random wordbank index
 var missedLetter = [];//array for missed letters
 // ---------------------------------------- Functions ----------------------------------
 //begin game function
@@ -21,10 +20,13 @@ var missedLetter = [];//array for missed letters
 function startGame() {
   //reset the limit each game
   limit = 6;
+  
   //will take a word from wordBank at random
 var randomWord = wordBank[Math.floor(Math.random() * wordBank.length)];
-//console.log(randomWord);//WORKED
-
+//reset "gameboard"
+randomLetters = [];
+missedLetter = [];
+displayWord = [];
 //will place letters of randomWord in letter array
 for (var i = 0; i < randomWord.length; i++) {
 
